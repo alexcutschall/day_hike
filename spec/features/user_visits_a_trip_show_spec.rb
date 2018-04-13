@@ -6,6 +6,8 @@ describe 'user visits the trips index' do
       trip = Trip.create(name: "John Muir", start_date: "2001-02-03T04:05:06+00:00", end_date: "2001-02-03T04:05:08+00:00")
       trail_1 = trip.trails.create(name: "The great one", address: "123 Main Street", length: 10)
       trail_2 = trip.trails.create(name: "The lame one", address: "123 Lame Street", length: 20)
+      hike_1 = trip.trail_trips.create(name: "Sunday Afternoon great", trail_id: trail_1.id)
+      hike_2 = trip.trail_trips.create(name: "Friday Afternoon", trail_id: trail_2.id)
 
       visit trips_path
       click_on trip.name
@@ -17,11 +19,12 @@ describe 'user visits the trips index' do
       expect(page).to have_content(trail_2.name)
       expect(page).to have_content(trail_2.address)
       expect(page).to have_content(trail_2.length)
-      expect(page).to have_content("Total Distance: 30")
+      expect(page).to have_content("Total Distance: 60")
       expect(page).to have_content("Average Distance: 15")
       expect(page).to have_content("Longest Distance: 20")
       expect(page).to have_content("Shortest Distance: 10")
-
+      expect(page).to have_content(hike_1.name)
+      expect(page).to have_content(hike_2.name)
     end
   end
 end

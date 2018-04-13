@@ -4,6 +4,9 @@
   <%= trail.address %>
   <%= trail.length %>
 <% end %>
+<% @trip.trail_trips.each do |hike| %>
+  <%= hike.name %>
+<% end %>
 Total Distance: <%= @trip.total_hiking_distance %>
 Average Distance: <%= @trip.average_hiking_distance %>
 Longest Distance: <%= @trip.longest_hiking_distance %>

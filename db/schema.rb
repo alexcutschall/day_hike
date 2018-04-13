@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413161220) do
+ActiveRecord::Schema.define(version: 20180413164938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180413161220) do
   create_table "trail_trips", force: :cascade do |t|
     t.bigint "trail_id"
     t.bigint "trip_id"
+    t.string "name"
     t.index ["trail_id"], name: "index_trail_trips_on_trail_id"
     t.index ["trip_id"], name: "index_trail_trips_on_trip_id"
   end
